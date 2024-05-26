@@ -53,4 +53,9 @@ class HashMap {
 
     return null;
   }
+
+  //   Method to check if a key exists
+  has(key) {
+    return this.get(key) !== null;
+  }
 }
