@@ -74,4 +74,48 @@ class HashMap {
     }
     return false;
   }
+
+  // Method to return the number of elements
+  length() {
+    return this.size;
+  }
+
+  // Method to clear all elements
+  clear() {
+    this.buckets = new Array(this.buckets.length).fill(null).map(() => []);
+    this.size = 0;
+  }
+
+  // Method to return all keys
+  keys() {
+    const keys = [];
+    for (const bucket of this.buckets) {
+      for (const [k, v] of bucket) {
+        keys.push(k);
+      }
+    }
+    return keys;
+  }
+
+  // Method to return all values
+  values() {
+    const values = [];
+    for (const bucket of this.buckets) {
+      for (const [k, v] of bucket) {
+        values.push(v);
+      }
+    }
+    return values;
+  }
+
+  // Method to return all entries
+  entries() {
+    const entries = [];
+    for (const bucket of this.buckets) {
+      for (const entry of bucket) {
+        entries.push(entry);
+      }
+    }
+    return entries;
+  }
 }
