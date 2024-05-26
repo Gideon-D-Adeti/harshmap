@@ -118,4 +118,17 @@ class HashMap {
     }
     return entries;
   }
+
+  // Private method to resize the buckets array
+  _resize(newSize) {
+    const oldBuckets = this.buckets;
+    this.buckets = new Array(newSize).fill(null).map(() => []);
+    this.size = 0;
+
+    for (const bucket of oldBuckets) {
+      for (const [k, v] of bucket) {
+        this.set(k, v);
+      }
+    }
+  }
 }
