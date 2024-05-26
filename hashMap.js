@@ -39,4 +39,18 @@ class HashMap {
       return;
     }
   }
+
+  //   Method to get the value for a given key
+  get(key) {
+    const index = this.hash(key);
+    const bucket = this.buckets[index];
+
+    for (const [k, v] of bucket) {
+      if (k === key) {
+        return v;
+      }
+    }
+
+    return null;
+  }
 }
