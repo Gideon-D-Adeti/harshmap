@@ -1,12 +1,18 @@
 class HashMap {
   constructor(initialSize = 16) {
+    if (initialSize < 0) {
+      throw new Error("Initial size cannot be negative");
+    }
     this.buckets = new Array(initialSize).fill(null).map(() => []);
     this.size = 0;
     this.loadFactor = 0.75;
   }
 
-  //   Method to generate hashCodes of keys
+  // Method to generate hashCodes of keys
   hash(key) {
+    if (typeof key !== "string") {
+      throw new Error("Key must be a string");
+    }
     let hashCode = 0;
     let bucketSize = this.buckets.length;
     const primeNumber = 31;
@@ -39,7 +45,7 @@ class HashMap {
     }
   }
 
-  //   Method to get the value for a given key
+  // Method to get the value for a given key
   get(key) {
     const index = this.hash(key);
     const bucket = this.buckets[index];
@@ -53,12 +59,12 @@ class HashMap {
     return null;
   }
 
-  //   Method to check if a key exists
+  // Method to check if a key exists
   has(key) {
     return this.get(key) !== null;
   }
 
-  //   Method to remove a key-value pair
+  // Method to remove a key-value pair
   remove(key) {
     const index = this.hash(key);
     const bucket = this.buckets[index];
@@ -134,10 +140,16 @@ class HashMap {
 
 class HashSet {
   constructor(initialSize = 16) {
+    if (initialSize < 0) {
+      throw new Error("Initial size cannot be negative");
+    }
     this.map = new HashMap(initialSize);
   }
 
   add(key) {
+    if (typeof key !== "string") {
+      throw new Error("Key must be a string");
+    }
     this.map.set(key, true);
   }
 
