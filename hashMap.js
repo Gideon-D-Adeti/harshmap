@@ -35,8 +35,7 @@ class HashMap {
     this.size++;
 
     if (this.size / this.buckets.length > this.loadFactor) {
-      // TODO: write resize method
-      return;
+      this._resize(this.buckets.length * 2);
     }
   }
 
