@@ -58,4 +58,20 @@ class HashMap {
   has(key) {
     return this.get(key) !== null;
   }
+
+  //   Method to remove a key-value pair
+  remove(key) {
+    const index = this.hash(key);
+    const bucket = this.buckets[index];
+
+    for (let i = 0; i < bucket.length; i++) {
+      const [k, v] = bucket[i];
+      if (k === key) {
+        bucket.splice(i, 1);
+        this.size--;
+        return true;
+      }
+    }
+    return false;
+  }
 }
